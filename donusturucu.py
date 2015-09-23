@@ -34,13 +34,13 @@ def main(girisDizini, cikisDizini):
             d_isim = os.path.basename(yol) 
             dosya_ismi = os.path.splitext(d_isim)[0]
             dosyalar.append(dosya_ismi)
-        # remove files that have already been outputted from the list
+
         dosyalar[:] = [f for f in dosyalar if not DosyaKontrol(cikisDizini, f, ".mp3")]
     except OSError as e:
         exit(e)
     
     if len(dosyalar) == 0:
-        exit("Could not find any files to convert that have not already been converted.")
+        exit("Donusturme yapmak icin dosya bulunamadi.")
 
     # convert all unconverted files
     for dosya_ismi in dosyalar:
